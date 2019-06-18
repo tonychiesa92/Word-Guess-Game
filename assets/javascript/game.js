@@ -1,7 +1,6 @@
 // game.js
 
 // define variables
-
 // var alpabetArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var answerArray = ["Schwarzenegger", "Dicaprio", "Bridges", "Eastwood", "Jackson"];
 var computerGuess = answerArray[Math.floor(Math.random() * answerArray.length)];
@@ -10,8 +9,6 @@ var wins = 0;
 var count = 9;
 var guess = "";
 var hidden = setHidden();
-
-
 
 // define elements by id
 //var ansText = document.getElementById("ans-text");
@@ -30,7 +27,6 @@ hiddenText.textContent = hidden;
 // get user input
 document.onkeyup = function (event) {
     var userGuess = event.key.toLowerCase();
-
 
     // checking for duplicate entries
     var found = guess.search(userGuess);
@@ -57,22 +53,19 @@ document.onkeyup = function (event) {
             // correct guess
             hidden = replaceHidden(found1, userGuess);
             var counter = star.split(userGuess).length - 1;
-            
+
             // check for double letters ******
-            if (counter>1){
-                var last=found1 + 1;
-                for (var x=0;x<counter - 1;x++){
-                    
+            if (counter > 1) {
+                var last = found1 + 1;
+                for (var x = 0; x < counter - 1; x++) {
+
                     var found3 = star.indexOf(userGuess, last);
                     //alert("counter= " + counter +" f3= " + found3 +" f1= " + found1);
                     hidden = replaceHidden(found3, userGuess);
                     last = found3 + 1;
                 }
             }
-           
 
-            
-         
             var winCheck = winner();
             if (winCheck === 1) {
                 wins++;
@@ -81,10 +74,8 @@ document.onkeyup = function (event) {
                 computerGuess = answerArray[Math.floor(Math.random() * answerArray.length)];
                 star = computerGuess.toLowerCase();
                 hidden = setHidden();
-
                 alert("Congrats you won!");
             }
-
         }
         // display to html
         winsText.textContent = "Wins: " + wins;
@@ -92,8 +83,6 @@ document.onkeyup = function (event) {
         guessesText.textContent = "Your guesses so far: " + guess;
         //ansText.textContent = "The answer is : " + computerGuess;
         hiddenText.textContent = hidden;
-
-
     }
 }
 
@@ -103,25 +92,22 @@ function setHidden() {
     for (var i = 0; i < star.length; i++) {
         key = key + "_ ";
     }
-
     return key;
 }
 
 // replaces underscore with corret guess
 function replaceHidden(found1, userGuess) {
     var key = "";
-    var index=0;
-    if (found1>0){
+    var index = 0;
+    if (found1 > 0) {
         index = found1 + found1;
     }
-
     for (var i = 0; i < hidden.length; i++) {
 
         var tempstr = hidden.substr(i, 1);
         if (i == index) {
             tempstr = userGuess;
         }
-
         //alert(userGuess + " f1=" +found1 +" "+ hidden.length + " " + i + " temp=" + tempstr);
         key = key + tempstr;
     }
@@ -132,7 +118,6 @@ function replaceHidden(found1, userGuess) {
 function winner() {
     var found = hidden.search("_");
     if (found === -1) {
-
         return 1;
     }
     return 0;
