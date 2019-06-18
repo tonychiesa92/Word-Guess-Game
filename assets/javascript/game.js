@@ -1,34 +1,33 @@
 // game.js
 
 // define variables
-var actorArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var computerGuess = alpabetArray[Math.floor(Math.random() * alpabetArray.length)];
+// define variables
+// var alpabetArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var answerArray = ["Arnold","Leo","Jeff","Clint", "Sam"];
+var computerGuess = answerArray[Math.floor(Math.random() * answerArray.length)];
+var star = computerGuess.toLowerCase();
 var wins = 0;
-var losses = 0;
 var count = 9;
 var guess = "";
-var answerArray=[];
-for (var =i; i<alpabetArray.length; i++){
-    answerArray[i]="_"
-}
 
 
 
 // define elements by id
+var ansText= document.getElementById("ans-text");
 var winsText = document.getElementById("wins-text");
-var lossesText = document.getElementById("losses-text");
 var countText = document.getElementById("count-text");
 var guessesText = document.getElementById("guesses-text");
 
 // display to html
 winsText.textContent = "Wins: " + wins;
-lossesText.textContent = "Losses: " + losses;
 countText.textContent = "Guesses left: " + count;
 guessesText.textContent = "Your guesses so far: " + guess;
+ansText.textContent = "The answer is : " + computerGuess;
 
 // get user input
 document.onkeyup = function (event) {
     var userGuess = event.key.toLowerCase();
+   
 
     // checking for duplicate entries
     var found = guess.search(userGuess);
@@ -43,14 +42,15 @@ document.onkeyup = function (event) {
         }
 
         // checking guess
-        if ((userGuess !== computerGuess)) {
+        found = star.search(userGuess);
+        if ((found === -1)) {
             count--;
             // incorrect guess
             if ((count === 0)) {
-                losses++;
                 count = 9;
                 guess = "";
-                computerGuess = alpabetArray[Math.floor(Math.random() * alpabetArray.length)];
+                computerGuess = answerArray[Math.floor(Math.random() * answerArray.length)];
+                star = computerGuess.toLowerCase();
             }
         }
         else {
@@ -58,13 +58,37 @@ document.onkeyup = function (event) {
             wins++;
             count = 9;
             guess = "";
-            computerGuess = alpabetArray[Math.floor(Math.random() * alpabetArray.length)];
+            computerGuess = answerArray[Math.floor(Math.random() * answerArray.length)];
+            star = computerGuess.toLowerCase();
         }
         // display to html
         winsText.textContent = "Wins: " + wins;
-        lossesText.textContent = "Losses: " + losses;
         countText.textContent = "Guesses left: " + count;
         guessesText.textContent = "Your guesses so far: " + guess;
+        ansText.textContent = "The answer is : " + computerGuess;
     }
 }
-    
+
+// var answerArray = ["Arnold","Leo","Jeff","Clint"];
+// var storedGuess = [];
+
+// result = function () {
+//     wordHolder = document.getElementById('hold');
+//     correct = document.createElement('ul');
+
+//     for (var i = 0; i < word.length; i++) {
+//       correct.setAttribute('id', 'my-word');
+//       guess = document.createElement('li');
+//       guess.setAttribute('class', 'guess');
+//       if (word[i] === "-") {
+//         guess.innerHTML = "-";
+//         space = 1;
+//       } else {
+//         guess.innerHTML = "_";
+//       }
+
+//       storedGuess.push(guess);
+//       wordHolder.appendChild(correct);
+//       correct.appendChild(guess);
+//     }
+//   }
