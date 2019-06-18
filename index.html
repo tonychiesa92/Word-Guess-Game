@@ -2,37 +2,99 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Word Guess Game</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="assets/css/reset.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Word Guess Game</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <h1>The Word Guess Game</h1>
-        <br>
-        <p>Press any key to get started.</p>
-        <br>
-        <p>Guess what Actor I am thinkging of.</p>
-        <br>
-        <!-- <p id=ans-text></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="assets/images/images.jpeg" alt="Awesome">
+                <h1>The Word Guess Game</h1>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="box a"><h2>Press any key to get started.</h2></div>
+        <div class="box b"><h2>Guess what Actor I am thinkging of?</h2></div>
+        <div class="box c">
+            <p id=hidden-text></p>
+            <p id=guesses-text></p>
+            
+        </div>
+        <div class="box d">
+            <p id=wins-text></p>
+            <p id=count-text></p>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="container">
+
+        <div class="row">
+            <div class="col-6">
+                <p>Press any key to get started.</p>
+            </div>
+            <div class="col-6">
+                <p>Guess what Actor I am thinkging of.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p id=wins-text></p>
+            </div>
+            <div class="col-6">
+                <p id=hidden-text></p>
+            </div>
+        </div> -->
+        <!-- <div class="col-6">
+                        <p id=wins-text></p>
+                    </div>
+                    <div class="col-6">
+                        <p id=hidden-text></p>
+                    </div>
+                
+            </div>
+
+            <div class="col-6">
+                <p>Guess what Actor I am thinkging of.</p>
+                <div class="row">
+                    <div class="col-6">
+                        <p id=count-text></p>
+                    </div>
+                    <div class="col-6">
+                        <p id=guesses-text></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>-->
+
+    </div>
+
+
+
+
+    <!-- <p id=ans-text></p>
         <br> -->
-        <p id=wins-text></p>
-        <br>
-        <p id=hidden-text></p>
-        <br>
-        <p id=count-text></p>
-        <br>
-        <p id=guesses-text></p>
-        <br>
-        
-        <script src="assets/javascript/game.js" async defer></script>
-    </body>
+
+
+    <script src="assets/javascript/game.js" async defer></script>
+</body>
+
 </html>
