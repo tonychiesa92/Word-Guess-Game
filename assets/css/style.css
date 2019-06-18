@@ -31,6 +31,16 @@
       font-weight: bold;
   }
 
+  h3{
+      color: red;
+      padding: 10px;
+  }
+
+  h4{
+      color: green;
+      padding: 10px;
+  }
+
   p{
       padding: 10px;
   }

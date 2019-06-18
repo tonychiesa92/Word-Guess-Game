@@ -1,9 +1,9 @@
 // game.js
 
 // define variables
-// define variables
+
 // var alpabetArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var answerArray = ["Arnold", "Leo", "Jeff", "Clint", "Sam"];
+var answerArray = ["Schwarzenegger", "Dicaprio", "Bridges", "Eastwood", "Jackson"];
 var computerGuess = answerArray[Math.floor(Math.random() * answerArray.length)];
 var star = computerGuess.toLowerCase();
 var wins = 0;
@@ -56,8 +56,23 @@ document.onkeyup = function (event) {
         else {
             // correct guess
             hidden = replaceHidden(found1, userGuess);
+            var counter = star.split(userGuess).length - 1;
+            
             // check for double letters ******
+            if (counter>1){
+                var last=found1 + 1;
+                for (var x=0;x<counter - 1;x++){
+                    
+                    var found3 = star.indexOf(userGuess, last);
+                    //alert("counter= " + counter +" f3= " + found3 +" f1= " + found1);
+                    hidden = replaceHidden(found3, userGuess);
+                    last = found3 + 1;
+                }
+            }
            
+
+            
+         
             var winCheck = winner();
             if (winCheck === 1) {
                 wins++;
@@ -86,7 +101,7 @@ document.onkeyup = function (event) {
 function setHidden() {
     var key = "";
     for (var i = 0; i < star.length; i++) {
-        key = key + "_";
+        key = key + "_ ";
     }
 
     return key;
@@ -95,11 +110,15 @@ function setHidden() {
 // replaces underscore with corret guess
 function replaceHidden(found1, userGuess) {
     var key = "";
+    var index=0;
+    if (found1>0){
+        index = found1 + found1;
+    }
 
     for (var i = 0; i < hidden.length; i++) {
 
         var tempstr = hidden.substr(i, 1);
-        if (i == found1) {
+        if (i == index) {
             tempstr = userGuess;
         }
 
