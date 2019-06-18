@@ -56,6 +56,8 @@ document.onkeyup = function (event) {
         else {
             // correct guess
             hidden = replaceHidden(found1, userGuess);
+            // check for double letters ******
+           
             var winCheck = winner();
             if (winCheck === 1) {
                 wins++;
@@ -63,7 +65,7 @@ document.onkeyup = function (event) {
                 guess = "";
                 computerGuess = answerArray[Math.floor(Math.random() * answerArray.length)];
                 star = computerGuess.toLowerCase();
-                hidden=setHidden();
+                hidden = setHidden();
 
                 alert("Congrats you won!");
             }
@@ -90,6 +92,7 @@ function setHidden() {
     return key;
 }
 
+// replaces underscore with corret guess
 function replaceHidden(found1, userGuess) {
     var key = "";
 
@@ -104,9 +107,9 @@ function replaceHidden(found1, userGuess) {
         key = key + tempstr;
     }
     return key;
-
 }
 
+// checks for winner
 function winner() {
     var found = hidden.search("_");
     if (found === -1) {
@@ -115,31 +118,3 @@ function winner() {
     }
     return 0;
 }
-
-
-
-
-
-// var answerArray = ["Arnold","Leo","Jeff","Clint"];
-// var storedGuess = [];
-
-// result = function () {
-//     wordHolder = document.getElementById('hold');
-//     correct = document.createElement('ul');
-
-//     for (var i = 0; i < word.length; i++) {
-//       correct.setAttribute('id', 'my-word');
-//       guess = document.createElement('li');
-//       guess.setAttribute('class', 'guess');
-//       if (word[i] === "-") {
-//         guess.innerHTML = "-";
-//         space = 1;
-//       } else {
-//         guess.innerHTML = "_";
-//       }
-
-//       storedGuess.push(guess);
-//       wordHolder.appendChild(correct);
-//       correct.appendChild(guess);
-//     }
-//   }
